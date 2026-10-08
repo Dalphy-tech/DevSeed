@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7f6;
+    color: #1f2933;
+    line-height: 1.6;
+}
+
+.container {
+    width: min(100% - 2rem, 1000px);
+    margin: 0 auto;
+}
+
+.header {
+    padding: 2.5rem 0;
+    background: #ffffff;
+    border-bottom: 1px solid #d9e2e7;
+}
+
+.header h1 {
+    font-size: 2rem;
+}
+
+.header p {
+    color: #64748b;
+}
+
+main {
+    padding: 2rem 0 4rem;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #d9e2e7;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+button {
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+    background: #e2e8f0;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.generate-button {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    font-weight: 700;
+}
+
+textarea {
+    min-height: 300px;
+    resize: vertical;
+    font-family: monospace;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.field-row:last-child {
+    margin-bottom: 0;
+}
+
+.field-row input,
+.field-row select {
+    width: 100%;
+}
+
+.remove-field {
+    white-space: nowrap;
+}

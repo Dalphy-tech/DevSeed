@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevSeed — Database Seed Data Generator</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <h1>🌱 DevSeed</h1>
+            <p>Database Seed Data Generator</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="card">
+            <h2>Database Table</h2>
+
+            <div class="form-group">
+                <label for="tableName">Table Name</label>
+                <input
+                    type="text"
+                    id="tableName"
+                    placeholder="e.g. users"
+                    value="users"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="recordCount">Number of Records</label>
+                <input
+                    type="number"
+                    id="recordCount"
+                    min="1"
+                    max="1000"
+                    value="10"
+                >
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h2>Fields</h2>
+                <button id="addFieldButton" type="button">
+                    + Add Field
+                </button>
+            </div>
+
+            <div id="fieldsContainer"></div>
+        </section>
+
+        <button id="generateButton" class="generate-button" type="button">
+            Generate SQL
+        </button>
+
+        <section class="card output-section">
+            <div class="section-header">
+                <h2>Generated SQL</h2>
+
+                <div>
+                    <button id="copyButton" type="button">
+                        Copy SQL
+                    </button>
+
+                    <button id="downloadButton" type="button">
+                        Download .sql
+                    </button>
+                </div>
+            </div>
+
+            <textarea
+                id="sqlOutput"
+                readonly
+                placeholder="Your generated SQL will appear here..."
+            ></textarea>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
