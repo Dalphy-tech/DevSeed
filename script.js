@@ -284,6 +284,41 @@ function generateSQL(tableName, fields, records) {
     return `INSERT INTO ${tableName} (${columnNames})\nVALUES\n${valueRows.join(",\n")};`;
 }
 
+//validate fields
+
+function validateFields() {
+    const fieldRows = document.querySelectorAll(".field-row");
+    const fields = getFields();
+    const seenNames = new Set();
+
+    if (fieldRows.length === 0 || fields.length === 0) {
+        return "Please add at least one field and enter its name.";
+    }
+
+    for (const row of fieldRows) {
+        const nameInput = row.querySelector(".field-name");
+        const name = nameInput.value.trim();
+
+        if (!name) {
+            return "Please enter a name for every field.";
+        }
+
+        if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(name)) {
+            return `Invalid field name "${name}". Use letters, numbers, and underscores, starting with a letter or underscore.`;
+        }
+
+        const normalizedName = name.toLowerCase();
+
+        if (seenNames.has(normalizedName)) {
+            return `Duplicate field name "${name}". Each field must have a unique name.`;
+        }
+
+        seenNames.add(normalizedName);
+    }
+
+    return null;
+}
+
 
 // connect buttons 
 
@@ -291,6 +326,32 @@ generateButton.addEventListener("click", function () {
     const tableName = tableNameInput.value.trim();
     const recordCount = Number(recordCountInput.value);
     const fields = getFields();
+
+    sqlOutput.value = "";
+
+    const fieldError = validateFields();
+
+    if (fieldError) {
+        alert(fieldError);
+        return;
+    }
+
+    if (!tableName) {
+        alert("Please enter a table name.");
+        tableNameInput.focus();
+        return;
+    }
+
+    if (
+        !recordCountInput.value.trim() ||
+        !Number.isInteger(recordCount) ||
+        recordCount < 1 ||
+        recordCount > 1000
+    ) {
+        alert("Please enter a whole number of records between 1 and 1000.");
+        recordCountInput.focus();
+        return;
+    }
 
     const records = generateRecords(recordCount, fields);
 
