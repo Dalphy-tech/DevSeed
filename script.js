@@ -3,8 +3,12 @@ const addFieldButton = document.getElementById("addFieldButton");
 
 const tableNameInput = document.getElementById("tableName");
 const recordCountInput = document.getElementById("recordCount");
+
 const generateButton = document.getElementById("generateButton");
 const sqlOutput = document.getElementById("sqlOutput");
+const copyButton = document.getElementById("copyButton");
+const downloadButton = document.getElementById("downloadButton");
+
 
 const emailCounts = {};
 
@@ -293,4 +297,49 @@ generateButton.addEventListener("click", function () {
     const sql = generateSQL(tableName, fields, records);
 
     sqlOutput.value = sql;
+});
+
+//copy button
+
+copyButton.addEventListener("click", async function () {
+    if (!sqlOutput.value) {
+        return;
+    }
+
+    await navigator.clipboard.writeText(sqlOutput.value);
+
+    copyButton.textContent = "Copied!";
+
+    setTimeout(function () {
+        copyButton.textContent = "Copy SQL";
+    }, 2000);
+});
+
+// download button
+
+downloadButton.addEventListener("click", function () {
+    /*console.log("Download button clicked!");
+    console.log("SQL content:", sqlOutput.value);*/
+
+    if (!sqlOutput.value.trim()) {
+        return;
+    }
+
+    const sqlContent = sqlOutput.value;
+
+    const blob = new Blob([sqlContent], {
+        type: "text/sql;charset=utf-8"
+    });
+
+    const downloadUrl = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = downloadUrl;
+    link.download = "devseed-data.sql";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    URL.revokeObjectURL(downloadUrl);
 });
