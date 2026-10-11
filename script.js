@@ -342,6 +342,14 @@ generateButton.addEventListener("click", function () {
         return;
     }
 
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(tableName)) {
+        alert(
+            "Invalid table name. Use letters, numbers, and underscores, starting with a letter or underscore."
+        );
+        tableNameInput.focus();
+        return;
+    }
+
     if (
         !recordCountInput.value.trim() ||
         !Number.isInteger(recordCount) ||
