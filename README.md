@@ -94,6 +94,10 @@ The core functionality is implemented, including data generation, SQL output, va
 
 DevSeed was built to make the creation of development seed data simpler and faster while demonstrating practical frontend development, JavaScript logic, input validation, and user-focused interface design.
 
+## ✅ Live Site
+
+https://dalphy-tech.github.io/DevSeed/
+
 ## 📄 License
 
 No license has been specified yet. All rights are reserved by default; see the repository owner for permission to use, modify, or redistribute the code.
